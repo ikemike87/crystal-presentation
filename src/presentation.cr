@@ -45,8 +45,8 @@ module Presentation
     puts "str length = #{str.size}"
   end
 
-  # control flow
-  def control_flow_example
+  # if
+  def if_example
     if true
       puts "True"
     end
@@ -84,6 +84,22 @@ module Presentation
     arr2 << "str"
     p! arr2
   end
+
+  # loops
+  def loop_example
+    count = 0
+    while count < 3
+      puts "#{count}\n"
+      count += 1
+    end
+    puts "\n"
+
+    arr = [1, 2, 3]
+    arr.each {|i| 
+      puts i + 1
+    }
+
+  end
 end
 
 include Presentation
@@ -99,7 +115,9 @@ puts "\n"
 math_example 9, 5
 puts "\nString Example\n"
 string_example()
-puts "\nControl Flow Example\n"
-control_flow_example()
+puts "\nIf Example\n"
+if_example()
 puts "\nData Structure Example\n"
 data_structure_example()
+puts "\nLoop Example\n"
+loop_example()
