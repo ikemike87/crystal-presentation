@@ -14,9 +14,37 @@ module Presentation
     p! arr2
     puts arr2[2]
   end
+
+  def concurrency_example
+    channel = Channel(Int32).new
+
+    spawn do
+      puts "before send"
+      channel.send(1)
+      puts "after send"
+    end
+
+    spawn do
+      puts "before receive"
+      puts channel.receive
+      puts "after receive"
+    end
+
+    puts "before yield"
+    Fiber.yield
+    puts "after yield"
+  end
+
+  lib C 
+    fun cos(value: Float64) : Float64
+  end
 end
 include Presentation
 
 # run functions
 puts "\nStatic Typing Example\n"
 static_type_example()
+puts "\nConcurrency Example\n"
+concurrency_example()
+puts "\nC bindings Example\n"
+puts C.cos(1.5)
